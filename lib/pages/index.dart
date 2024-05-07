@@ -67,8 +67,11 @@ class _HomeState extends State<Home> {
       BuildContext context, Map<String, dynamic> data, Api controller) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => News(data: data)));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => News(
+                  data: data,
+                  fav: false,
+                )));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),

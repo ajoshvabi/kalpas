@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class News extends StatelessWidget {
   Map<String, dynamic> data;
-  News({super.key, required this.data});
-
+  final bool fav;
+  News({Key? key, required this.data, required this.fav}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,20 +22,24 @@ class News extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: 200,
                     decoration: BoxDecoration(
+                      color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(18),
                       image: DecorationImage(
-                        image: NetworkImage(data["urlToImage"] ?? ""),
+                        image: NetworkImage(data["urlToImage"] ??
+                            "https://as1.ftcdn.net/v2/jpg/02/99/61/74/1000_F_299617487_fPJ8v9Onthhzwnp4ftILrtSGKs1JCrbh.jpg"),
                         fit: BoxFit.cover,
                       ),
                     ),
                     alignment: Alignment.topRight,
-                    child: const Padding(
-                      padding: EdgeInsets.only(top: 10, right: 15),
-                      // child: Icon(
-                      //   Icons.favorite,
-                      //   color: Colors.red,
-                      //   size: 40,
-                      // ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10, right: 15),
+                      child: fav == true
+                          ? const Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                              size: 40,
+                            )
+                          : const SizedBox(),
                     ),
                   ),
                   Container(

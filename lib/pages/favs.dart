@@ -72,7 +72,7 @@ class _FavsState extends State<Favs> {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                News(data: listofarticle)));
+                                                News(data: listofarticle,fav:true)));
                                   },
                                   child: cards(index, context, listofarticle),
                                 );
